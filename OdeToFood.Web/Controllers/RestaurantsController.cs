@@ -1,4 +1,5 @@
-﻿using OdeToFood.Data.Services;
+﻿using OdeToFood.Data.Models;
+using OdeToFood.Data.Services;
 using OdeToFood.Web.Api;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,18 @@ namespace OdeToFood.Web.Controllers
                 return View("NotFound");
             }
             return View(model);
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Restaurant restaurant)
+        {
+            db.Add(restaurant);
+            return View();
         }
     }
 }
