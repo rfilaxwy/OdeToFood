@@ -27,6 +27,16 @@ namespace OdeToFood.Data.Services
         {
             return restaurants.FirstOrDefault(r => r.Id == id);
         }
+        
+        public void Update(Restaurant restaurant)
+        {
+            var existing = Get(restaurant.Id);
+            if(existing != null)
+            {
+                existing.Name = restaurant.Name;
+                existing.Cuisine = restaurant.Cuisine;
+            }
+        }
 
         public IEnumerable<Restaurant> GetAll()
         {
